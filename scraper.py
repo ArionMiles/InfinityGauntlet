@@ -19,12 +19,13 @@ def authenticate(user_agent, app_key, app_secret, username, password):
 
 def scrape(reddit):
     init_db()
-
     for submission in reddit.subreddit(subreddit).hot(limit=SEARCH_LIMIT):
         if not Users.query.filter(Users.username == submission.author.name).first():
             record = Users(username=submission.author.name)
             db_session.add(record)
-        for comment in submission.comments:
+
+        all_comments = submission.comments.list() #Get all nested comments as well, in a flattened list
+        for comment in all_comments:
             try:
                 if not Users.query.filter(Users.username == comment.author.name).first():
                     record = Users(username=comment.author.name)
