@@ -50,4 +50,4 @@ def ban(ill_fated):
 
 if __name__ == '__main__':
     snap()
-    print("It's done! Now you watch the sun rise on a greatful subreddit :)")
+    print("This day extracted a heavy toll, but it's done!\nNow you watch the sun rise on a greatful subreddit :)")
