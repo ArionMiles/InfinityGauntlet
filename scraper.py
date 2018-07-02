@@ -28,11 +28,14 @@ def scrape(reddit):
         for comment in all_comments:
             try:
                 if not Users.query.filter(Users.username == comment.author.name).first():
+                    #Spare the authenticated user, because this is a hard choice and they have a strong will
+                    if comment.author.name == username:
+                        continue
                     record = Users(username=comment.author.name)
                     db_session.add(record)
+                    db_session.commit()
             except AttributeError:
                 continue
-        db_session.commit()
 
 if __name__ == '__main__':
     SEARCH_LIMIT = 10
