@@ -33,7 +33,7 @@ def ban(ill_fated):
     You may think this is suffering....no! It is salvation. The subreddit scales...tip toward balance 
     because of your sacrifice. Smile...for even in death, you have become children of Thanos!
 
-    Join the others on /r/SoulWorld
+    Join the others on /r/inthesoulworld
 
     ^(This action was performed by a bot.)
     ^(for feedback, bug reports or just to say thanks! The code is on )[^github](https://github.com/ArionMiles/InfinityGauntlet))
@@ -45,6 +45,8 @@ def ban(ill_fated):
     for user in ill_fated:
         reddit.subreddit(subreddit).banned.add(user, ban_message=ban_message, ban_reason=ban_reason,
                                                duration=days_until_a4_releases)
+        reddit.subreddit(subreddit).flair.set(user,'perished')
+        reddit.subreddit('inthesoulworld').contributor.add(user)
         query = Users.__table__.update().where(and_(Users.username == user, Users.saved == False)).values(saved=True)
         connection.execute(query)
         print(f"{user} was snapped out of existence.")
