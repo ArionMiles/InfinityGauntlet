@@ -22,6 +22,11 @@ def authenticate(user_agent, app_key, app_secret, username, password):
     return reddit
 
 
+def spare_authenticated_user():
+    if bot_name:
+        Users.query.filter(Users.username == bot_name).update(saved=True)
+
+
 def scrape(reddit):
     print("Initializing database... (might take some time)")
     init_db()
@@ -30,12 +35,14 @@ def scrape(reddit):
     for submission in reddit.subreddit(subreddit).top(limit=SEARCH_LIMIT):
         print(f"Scraping contributors from thread (including all comments) number: {post_number}")
         authors = get_all_authors_from_submission(submission)
-        authors.append(submission.author.name)
+        if submission and submission.author and submission.author.name:
+            authors.append(submission.author.name)
         unique_authors = list(set(authors))
         data = [{'username': unique_author, 'saved': False} for unique_author in unique_authors]
         query = Users.__table__.insert(prefixes=["OR REPLACE"])
         connection.execute(query, data)
         post_number += 1
+    spare_authenticated_user()
     connection.close()
 
 
@@ -68,6 +75,6 @@ def get_all_nested_replies_from_comment_recursively(comments):
 
 
 if __name__ == '__main__':
-    SEARCH_LIMIT = 3
+    SEARCH_LIMIT = search_limit
     reddit = authenticate(user_agent, app_key, app_secret, username, password)
     scrape(reddit)
