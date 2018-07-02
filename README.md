@@ -1,10 +1,10 @@
 # Infinity Gauntlet
-Bring balance to /r/thanosdidnothingwrong
 
-Bans 50% of usernames found in threads and brings balance to the subreddit.
+Bans 50% of usernames found in threads and brings balance to the subreddit. Ban duration is days until release of Avengers 4 (26th Apr, 2019) when all banned souls will be unbanned.
 
 # Requirements
-Python 3.6 and above
+* Python 3.6 and above
+* Strongest of wills
 
 ## Installing Python3
 
@@ -58,9 +58,8 @@ Make sure it says Python 3.6+ and especially not python 2.7! In order to exit, y
 <hr>
 
 # Setup
-* Rename `sample_settings.py` to `settings.py`
-* Put your username-password.
-* [Create an app](https://ssl.reddit.com/prefs/apps/) (script) and copy the `id` & `secret` into `client_id` and `client_secret` respectively
+* Put your username-password in `config.ini`
+* [Create an app](https://ssl.reddit.com/prefs/apps/) (script) and copy the `id` & `secret` into `client_id` and `client_secret` respectively.
 * Run `pip install -r requirements.txt` to install all dependencies
 
 # Usage
