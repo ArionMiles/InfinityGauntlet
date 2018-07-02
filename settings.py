@@ -14,8 +14,10 @@ username = config.get_configuration("username")
 password = config.get_configuration("password")
 app_key = config.get_configuration("app_key")
 app_secret = config.get_configuration("app_secret")
+search_limit = int(config.get_configuration("search_limit"))
 
 # bot account
+bot_name = config.get_configuration("bot_name")
 access_token = config.get_configuration("access_token")
 refresh_token = config.get_configuration("refresh_token")
 
