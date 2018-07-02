@@ -69,7 +69,8 @@ Make sure it says Python 3.6+ and especially not python 2.7! In order to exit, y
 * Watch the sun rise on a grateful subreddit.
 
 # Contributors:
-* [xXAlligatorXx](https://github.com/xXAligatorXx)
+* [Ali Abdoli (xXAlligatorXx)](https://github.com/xXAligatorXx)
+* [Ujjwal Gupta (slapbot)](https://github.com/SlapBot)
 
 # License
 MIT License. See [LICENSE](LICENSE) file to know more.
