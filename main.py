@@ -43,7 +43,7 @@ def ban(ill_fated):
 
     reddit = authenticate(user_agent, app_key, app_secret, username, password)
     for user in ill_fated:
-        reddit.subreddit(subreddit).banned.add(user, ban_message=ban_message, ban_reason=ban_reason, duration=999)
+        reddit.subreddit(subreddit).banned.add(user, ban_message=ban_message, ban_reason=ban_reason, duration=days_until_a4_releases)
         Users.query.filter(and_(Users.username==user, Users.saved==False)).update(saved=True)
         print(f"{user} was snapped out of existence.")
     db_session.commit()
