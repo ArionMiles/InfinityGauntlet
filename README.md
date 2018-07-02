@@ -59,11 +59,12 @@ Make sure it says Python 3.6+ and especially not python 2.7! In order to exit, y
 
 # Setup
 * Put your username-password in `config.ini`
-* [Create an app](https://ssl.reddit.com/prefs/apps/) (script) and copy the `id` & `secret` into `client_id` and `client_secret` respectively.
+* [Create an app](https://ssl.reddit.com/prefs/apps/) (script) and copy the `id` & `secret` into `app_key` and `app_secret` respectively.
+* add the bot which you're gonna use to do the task at bot_name in config.ini file as well
 * Run `pip install -r requirements.txt` to install all dependencies
 
 # Usage
-* Run `python scraper.py` to scrape all usernames. This might take some time.
+* Run `python scraper.py` to scrape all usernames. This might take some time. (change search_limit to 1000 (max) in config.ini file)
 * Run `python main.py` to snap all the ill fated out of existence
 * Watch the sun rise on a grateful subreddit.
 

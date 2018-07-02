@@ -4,4 +4,4 @@
 
 subreddit = 'thanosdidnothingwrong'
 user_agent = ('Gauntlet, v0.1. Brings balance to the sub'
-              '(by /u/Arion_Miles)')
+              '(by /u/Arion_Miles and /u/Drazxie)')

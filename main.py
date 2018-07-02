@@ -1,6 +1,6 @@
 import random
 import textwrap
-from database import init_db, db_session
+from database import init_db, db_session, connection
 from models import Users
 from settings import *
 from scraper import authenticate
@@ -23,13 +23,12 @@ def snap():
     print(numbers_to_balance)
     # Select half users at random
     ill_fated = random.sample(all_users, numbers_to_balance)
+    db_session.close()
     ban(ill_fated)
 
 
 def ban(ill_fated):
     ban_message = textwrap.dedent("""
-    You have been banned from /r/thanosdidnothingwrong
-
     Hear me and rejoice! You have had the great privilege of being saved by the great titan. 
     You may think this is suffering....no! It is salvation. The subreddit scales...tip toward balance 
     because of your sacrifice. Smile...for even in death, you have become children of Thanos!
@@ -46,11 +45,15 @@ def ban(ill_fated):
     for user in ill_fated:
         reddit.subreddit(subreddit).banned.add(user, ban_message=ban_message, ban_reason=ban_reason,
                                                duration=days_until_a4_releases)
-        Users.query.filter(and_(Users.username == user, Users.saved == False)).update(saved=True)
+        query = Users.__table__.update().where(and_(Users.username == user, Users.saved == False)).values(saved=True)
+        connection.execute(query)
         print(f"{user} was snapped out of existence.")
-    db_session.commit()
+    connection.close()
 
 
 if __name__ == '__main__':
-    snap()
-    print("This day extracted a heavy toll, but it's done!\nNow you watch the sun rise on a greatful subreddit :)")
+    try:
+        snap()
+        print("This day extracted a heavy toll, but it's done!\nNow you watch the sun rise on a greatful subreddit :)")
+    except KeyboardInterrupt:
+        connection.close()

@@ -18,8 +18,6 @@ search_limit = int(config.get_configuration("search_limit"))
 
 # bot account
 bot_name = config.get_configuration("bot_name")
-access_token = config.get_configuration("access_token")
-refresh_token = config.get_configuration("refresh_token")
 
 # subreddit information
 subreddit = config.get_configuration("subreddit_name")

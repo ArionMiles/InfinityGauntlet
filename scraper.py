@@ -25,6 +25,8 @@ def authenticate(user_agent, app_key, app_secret, username, password):
 def spare_authenticated_user():
     if bot_name:
         Users.query.filter(Users.username == bot_name).update(saved=True)
+        query = Users.__table__.update().where(Users.username == bot_name).values(saved=True)
+        connection.execute(query)
 
 
 def scrape(reddit):
@@ -77,4 +79,7 @@ def get_all_nested_replies_from_comment_recursively(comments):
 if __name__ == '__main__':
     SEARCH_LIMIT = search_limit
     reddit = authenticate(user_agent, app_key, app_secret, username, password)
-    scrape(reddit)
+    try:
+        scrape(reddit)
+    except KeyboardInterrupt:
+        connection.close()
