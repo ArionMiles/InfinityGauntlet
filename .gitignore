@@ -105,7 +105,7 @@ venv.bak/
 
 users\.db
 
-settings\.py
+.idea
 
 \.vscode/
 
