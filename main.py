@@ -46,7 +46,7 @@ def ban(ill_fated):
         reddit.subreddit(subreddit).banned.add(user, ban_message=ban_message, ban_reason=ban_reason,
                                                duration=days_until_a4_releases)
         reddit.subreddit(subreddit).flair.set(user,'perished')
-        reddit.subreddit('inthesoulworld').contributor.add(user)
+        # reddit.subreddit('inthesoulworld').contributor.add(user)
         query = Users.__table__.update().where(and_(Users.username == user, Users.saved == False)).values(saved=True)
         connection.execute(query)
         print(f"{user} was snapped out of existence.")
