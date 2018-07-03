@@ -58,10 +58,11 @@ Make sure it says Python 3.6+ and especially not python 2.7! In order to exit, y
 <hr>
 
 # Setup
+* Clone the repository with `git clone https://github.com/ArionMiles/InfinityGauntlet.git`
 * Put your username-password in `config.ini`
 * [Create an app](https://ssl.reddit.com/prefs/apps/) (script) and copy the `id` & `secret` into `app_key` and `app_secret` respectively.
 * add the bot which you're gonna use to do the task at bot_name in config.ini file as well
-* Run `pip install -r requirements.txt` to install all dependencies
+* Open the repository in terminal and run `pip install -r requirements.txt` to install all dependencies
 
 # Usage
 * Run `python scraper.py` to scrape all usernames. This might take some time. (change search_limit to 1000 (max) in config.ini file)
