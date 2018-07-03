@@ -56,6 +56,6 @@ def ban(ill_fated):
 if __name__ == '__main__':
     try:
         snap()
-        print("This day extracted a heavy toll, but it's done!\nNow you watch the sun rise on a greatful subreddit :)")
+        print("This day extracted a heavy toll, but it's done!\nNow you watch the sun rise on a grateful subreddit :)")
     except KeyboardInterrupt:
         connection.close()
