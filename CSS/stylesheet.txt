@@ -1,0 +1,17 @@
+.flair {
+    background-image: url(%%spritesheet.png%%) no-repeat -9999px;
+    border: 0;
+    padding: 0;
+}
+
+.flair-dust {
+    width: 619px;
+    height: 350px;
+    background-position: 0 0;
+}
+
+.flair-thanos {
+    width: 1280px;
+    height: 720px;
+    background-position: -5px -5px;
+}
